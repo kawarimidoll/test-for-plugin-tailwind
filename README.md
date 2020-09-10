@@ -1,2 +1,2 @@
 # test-for-plugin-tailwind
-test for kawarimidoll/vuepress-plugin-tailwind
+test repository for [kawarimidoll/vuepress-plugin-tailwind](https://github.com/kawarimidoll/vuepress-plugin-tailwind)
