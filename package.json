@@ -1,0 +1,35 @@
+{
+  "name": "test-for-plugin-tailwind",
+  "description": "test repository for kawarimidoll/vuepress-plugin-tailwind",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "kawarimidoll",
+    "email": "kawarimidoll+git@gmail.com",
+    "url": "https://github.com/kawarimidoll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kawarimidoll/test-for-plugin-tailwind.git"
+  },
+  "bugs": "https://github.com/kawarimidoll/test-for-plugin-tailwind/issues",
+  "files": [
+    "index.js"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "vuepress build docs",
+    "dev": "vuepress dev docs --no-clear-screen",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tailwindcss": "^1.8.6"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2",
+    "vuepress": "^1.5.4"
+  }
+}
