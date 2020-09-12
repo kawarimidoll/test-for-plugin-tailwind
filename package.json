@@ -13,14 +13,22 @@
     "url": "https://github.com/kawarimidoll/test-for-plugin-tailwind.git"
   },
   "bugs": "https://github.com/kawarimidoll/test-for-plugin-tailwind/issues",
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "license": "MIT",
   "scripts": {
     "build": "vuepress build docs",
     "dev": "vuepress dev docs --no-clear-screen",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "test": "jest"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "publishConfig": {
     "access": "public"
@@ -29,7 +37,11 @@
     "tailwindcss": "^1.8.6"
   },
   "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
+    "lint-staged": "^10.3.0",
     "vuepress": "^1.5.4"
   }
 }

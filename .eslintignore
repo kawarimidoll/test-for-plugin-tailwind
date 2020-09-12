@@ -1,3 +1,4 @@
 # Enable lint dotfiles without node_modules
 !.*
 node_modules
+dist
