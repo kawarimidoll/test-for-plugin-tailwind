@@ -49,22 +49,35 @@ _These configuration files are not created automatically. You have to create the
 
 ### tailwindConfig
 
-This is the configuration object or path to the configuration file.
-
-default:
+This is the configuration object or path to the configuration file. The default value is :
 
 ```js
 {
   corePlugins: { preflight: false },
-  purge: [
-    `${sourceDir}/**/*.@(js|md|vue|html)`,
-    `${vuepressDir}/**/*.@(js|md|vue|html)`,
-    `${cwd}/node_modules/**/*vuepress*/!(node_modules)/**/*.@(js|md|vue|html)`,
-  ]
+  purge: {
+    content: [
+      `${sourceDir}/**/*.@(js|md|vue|html)`,
+      `${vuepressDir}/**/*.@(js|md|vue|html)`,
+    ],
+  },
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
 }
 ```
 
-This default value is adjusted for VuePress from [the document](https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css) to include all files in the source directory and all plugins with "vuepress" in the name.
+This default value is adjusted for VuePress from [the document](https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css).
+
+- The original styles of Vuepress is not reset by `corePlugins`.
+- The unused styles will be removed by `purge`. The styles used in source directory of Vuepress are protected by `content`.
+- The future update is enabled by `future`.
+
+The priorities of configuration is:
+1. If there is input `tailwindConfig`, the value is used.
+2. If there is `tailwind.config.js` in the same directory as `package.json`, the configuration file is used.
+3. the default value above is used.
+
 If you want to use this option, refer to [the Tailwind CSS configuration guide](https://tailwindcss.com/docs/configuration/).
 
 :bulb:
@@ -72,6 +85,12 @@ _`sourceDir`, `vuepressDir` and `cwd` above are [Context API](https://vuepress.v
 
 :warning:
 _If you use `tailwindConfig`, the default value is overwritten, not merged._
+
+## Versioning policy
+
+Since v1.x, the versioning of this plugin will follow that of Tailwind.
+
+For example, when there is a major version upgrade of Tailwind, this plugin also gets a major upgrade.
 
 ## License
 
