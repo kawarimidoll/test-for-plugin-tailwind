@@ -1,7 +1,7 @@
 {
-  "name": "test-for-plugin-tailwind",
+  "name": "@kawarimidoll/test-for-plugin-tailwind",
   "description": "test repository for kawarimidoll/vuepress-plugin-tailwind",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "author": {
     "name": "kawarimidoll",
@@ -37,7 +37,7 @@
     "access": "public"
   },
   "dependencies": {
-    "tailwindcss": "^1.8.6"
+    "tailwindcss": "*"
   },
   "devDependencies": {
     "eslint": "^7.8.1",
