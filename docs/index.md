@@ -36,8 +36,6 @@ yarn add @kawarimidoll/vuepress-plugin-tailwind
 module.exports = {
   plugins: [
     "@kawarimidoll/tailwind",
-    // with options
-    // ["@kawarimidoll/tailwind", { tailwindConfig: { important: true } }]
   ],
 };
 ```
@@ -47,44 +45,86 @@ _These configuration files are not created automatically. You have to create the
 
 ## Options
 
+If you want to use the options, refer to [the Tailwind CSS configuration guide](https://tailwindcss.com/docs/configuration/).
+
 ### tailwindConfig
 
-This is the configuration object or path to the configuration file. The default value is :
+This is the configuration object or path to the configuration file. Use like this :
+
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: [
+    ["@kawarimidoll/tailwind", { tailwindConfig: "style/config.js" }],
+  ],
+};
+```
+
+The default value is :
+
+```js
+{
+  purge: {
+    content: [
+      `${sourceDir}/**/*.@(js|ts|md|vue|html)`,
+      `${vuepressDir}/**/*.@(js|ts|md|vue|html)`,
+    ],
+  },
+}
+```
+
+This default value is adjusted for VuePress from [the document](https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css) to remove unused styles of Tailwind.
+
+The priorities of configuration is:
+
+1. If there is input `tailwindConfig`, the value is used.
+2. If there is `tailwind.config.js` in the same directory as `package.json`, the file is used.
+3. The default value above is used.
+
+:bulb:
+_`sourceDir` and `vuepressDir` above are [Context API](https://vuepress.vuejs.org/plugin/context-api.html) of VuePress._
+
+:warning:
+_If you use `tailwindConfig`, the default value is overwritten, not merged._
+
+### Any other key
+
+If you use any other key, the option object is merged to the default value of `tailwindConfig`.
+
+For example, when you use `corePlugins` and `important` like this:
+
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: [
+    [
+      "@kawarimidoll/tailwind",
+      { corePlugins: { preflight: false }, important: true },
+    ],
+  ],
+};
+```
+
+then, the configuration object is:
 
 ```js
 {
   corePlugins: { preflight: false },
+  important: true,
   purge: {
     content: [
       `${sourceDir}/**/*.@(js|md|vue|html)`,
       `${vuepressDir}/**/*.@(js|md|vue|html)`,
     ],
   },
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-}
+};
 ```
 
-This default value is adjusted for VuePress from [the document](https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css).
-
-- The original styles of Vuepress is not reset by `corePlugins`.
-- The unused styles will be removed by `purge`. The styles used in source directory of Vuepress are protected by `content`.
-- The future update is enabled by `future`.
-
-The priorities of configuration is:
-1. If there is input `tailwindConfig`, the value is used.
-2. If there is `tailwind.config.js` in the same directory as `package.json`, the configuration file is used.
-3. the default value above is used.
-
-If you want to use this option, refer to [the Tailwind CSS configuration guide](https://tailwindcss.com/docs/configuration/).
-
 :bulb:
-_`sourceDir`, `vuepressDir` and `cwd` above are [Context API](https://vuepress.vuejs.org/plugin/context-api.html) of VuePress._
+_If you use `tailwindConfig`, the other keys are ignored because of the priority._
 
 :warning:
-_If you use `tailwindConfig`, the default value is overwritten, not merged._
+_If you use `purge` key, the default value is overwritten, not merged. It is because this plugin uses [Object.assign()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) to merge objects._
 
 ## Versioning policy
 
