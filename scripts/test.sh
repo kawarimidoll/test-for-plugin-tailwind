@@ -3,7 +3,7 @@
 name='[test.sh]'
 
 die() {
-  echo "$name error: $@"
+  echo "$name error: $*"
   exit 1
 }
 
@@ -16,7 +16,7 @@ cssdir='docs/.vuepress/dist/assets/css/'
 cssfile=$(ls -1 "$cssdir")
 echo "$name success: Build finished."
 
-[ $(echo "$cssfile" | wc -l) -eq 1 ] || die 'An output style file is not found!'
+[ "$(echo "$cssfile" | wc -l)" -eq 1 ] || die 'An output style file is not found!'
 echo "$name success: An output style file is found."
 
 grep -q 'mx-2' "${cssdir}${cssfile}" || die 'There isn'\''t used style!'
