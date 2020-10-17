@@ -31,5 +31,5 @@ module.exports = {
     ],
     sidebar: "auto",
   },
-  plugins: [require("../../index")],
+  plugins: [[require("../../index"), { corePlugins: { preflight: false } }]],
 };
