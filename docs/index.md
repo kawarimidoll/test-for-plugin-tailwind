@@ -1,11 +1,5 @@
 # @kawarimidoll/vuepress-plugin-tailwind
 
-[![GitHub package.json version](https://img.shields.io/github/package-json/v/kawarimidoll/vuepress-plugin-tailwind?logo=github&style=for-the-badge)](https://github.com/kawarimidoll/vuepress-plugin-tailwind/blob/master/package.json)
-[![npm downloads](https://img.shields.io/npm/dt/@kawarimidoll/vuepress-plugin-tailwind?logo=npm&style=for-the-badge)](https://www.npmjs.com/package/@kawarimidoll/vuepress-plugin-tailwind)
-[![Dependencies](https://img.shields.io/david/kawarimidoll/vuepress-plugin-tailwind?color=blue&logo=dependabot&style=for-the-badge)](https://github.com/kawarimidoll/vuepress-plugin-tailwind/pulls?q=dependabot)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/kawarimidoll/vuepress-plugin-tailwind?logo=javascript&style=for-the-badge)](https://github.com/kawarimidoll/vuepress-plugin-tailwind/blob/master/index.js)
-[![LICENSE](https://img.shields.io/github/license/kawarimidoll/vuepress-plugin-tailwind?style=for-the-badge)](https://github.com/kawarimidoll/vuepress-plugin-tailwind/blob/master/LICENSE)
-
 A VuePress plugin to use [`tailwindcss`](https://github.com/tailwindcss/tailwindcss) easily.
 
 With this plugin, you can use any classes defined by Tailwind CSS, and the unused classes are automatically purged (production only).
@@ -105,7 +99,7 @@ module.exports = {
 };
 ```
 
-then, the configuration object is:
+Then, the configuration object is:
 
 ```js
 {
@@ -120,6 +114,8 @@ then, the configuration object is:
 };
 ```
 
+To build this document, `{ corePlugins: { preflight: false } }` is used to enable default style of VuePress.
+
 :bulb:
 _If you use `tailwindConfig`, the other keys are ignored because of the priority._
 
@@ -128,7 +124,7 @@ _If you use `purge` key, the default value is overwritten, not merged. It is bec
 
 ## Versioning policy
 
-Since v1.x, the versioning of this plugin will follow that of Tailwind.
+Since v1.0.0, the versioning of this plugin will follow that of Tailwind.
 
 For example, when there is a major version upgrade of Tailwind, this plugin also gets a major upgrade.
 

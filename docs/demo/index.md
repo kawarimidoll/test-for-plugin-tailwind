@@ -2,48 +2,70 @@
 
 ## In markdown
 
-You can use classes of tailwindcss in your markdown like this:
+You can use classes of tailwindcss in your markdown.
+
+### code
 
 ```markup
-<div class="flex">
-  <div class="mx-2 text-red-600">flex 1</div>
-  <div class="mx-2 text-red-600">flex 2</div>
-  <div class="mx-2 text-red-600">flex 3</div>
-</div>
+<div class="mx-2 text-red-700">red text!</div>
 ```
 
-This is shown as:
+### result
 
-<div class="flex">
-  <div class="mx-2 text-red-600">flex 1</div>
-  <div class="mx-2 text-red-600">flex 2</div>
-  <div class="mx-2 text-red-600">flex 3</div>
-</div>
+<div class="mx-2 text-red-700">red text!</div>
 
 ## In components
 
-You can also use them in the components:
+You can also use them in the components.
 
-definition in `docs/.vuepress/components/TestComponent.vue`
+### code
+
+Definition:
 
 ```markup
-<!-- TestComponent.vue -->
+<!-- .vuepress/components/RedText.vue -->
 
-TODO: copy here!
+<template>
+  <div class="mx-2 text-red-700">
+    {{ text }}
+  </div>
+</template>
 
+<script>
+export default {
+  props: {
+    text: { type: String, required: true }
+  }
+}
+</script>
+```
+
+Use:
+
+```markup
+<RedText text="Red text in component!" />
+```
+
+### result
+
+<RedText text="Red text in component!" />
+
+## More complex example
+
+### code
+
+```markup
 <div class="flex">
-  <div class="mx-2 text-red-600">flex 1</div>
-  <div class="mx-2 text-red-600">flex 2</div>
-  <div class="mx-2 text-red-600">flex 3</div>
+  <RedText text="Red flex 1!" />
+  <RedText text="Red flex 2!" class="transform rotate-90 my-8" />
+  <RedText text="Red flex 3!" class="bg-yellow-300"/>
 </div>
 ```
 
-and use in markdown:
+### result
 
-```markup
-<TestComponent/>
-```
-
-this is here:
-
-<TestComponent/>
+<div class="flex">
+  <RedText text="Red flex 1!" />
+  <RedText text="Red flex 2!" class="transform rotate-90 my-8" />
+  <RedText text="Red flex 3!" class="bg-yellow-300"/>
+</div>
